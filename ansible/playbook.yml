@@ -5,7 +5,7 @@
 
     - name: Install software
       include_role:
-        name: installation
+        name: install_k8s
 
     - name: Create target directory
       ansible.builtin.file: path=/etc/systemd/system/kubelet.service.d state=directory mode=0755
@@ -29,29 +29,7 @@
         state: started
         name: kubelet
 
-    - name: Init master node
-      ansible.builtin.shell: "kubeadm init --pod-network-cidr={{ network_cidr }} --apiserver-advertise-address={{ private_ip }} --service-cidr={{ network_cidr }}"
-      when: vm_name == "master"
-      become: yes
-
-    - name: Setup environment on the master node
-      ansible.builtin.shell: |
-        mkdir -p $HOME/.kube
-        sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-        sudo chown $(id -u):$(id -g) $HOME/.kube/config
-      when: vm_name == "master"
-
-    - name: Check status at the master node
-      ansible.builtin.shell: "kubectl get node"
-      when: vm_name == "master"
-
-    - name: Export credentinal for connecting
-      ansible.builtin.shell: "sudo kubeadm token create --print-join-command"
-      register: connection_cred
-      when: vm_name == "master"
-
-    - name: Set fact connection_cred
-      set_fact:
-        connection_cred: connection_cred
-        cacheable: yes
+    - name: Setup master node
+      include_role:
+        name: setup_master
       when: vm_name == "master"
