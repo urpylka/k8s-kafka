@@ -1,0 +1,59 @@
+- name: Ensure br_netfilter is enabled
+  modprobe:
+    name: br_netfilter
+    state: present
+
+- name: Setup required sysctl params
+  ansible.builtin.shell: |
+    echo "net.bridge.bridge-nf-call-iptables = 1" >> /etc/sysctl.conf
+    sysctl -p /etc/sysctl.conf
+
+- name: Set DEBIAN_FRONTEND
+  ansible.builtin.shell: "export DEBIAN_FRONTEND=noninteractive"
+
+- name: Install auxiliary packages
+  ansible.builtin.apt:
+    pkg:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+    update_cache: yes
+    install_recommends: no
+
+- name: Add repo Docker-CE
+  ansible.builtin.shell: |
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+    add-apt-repository "deb https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable"
+    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+
+- name: Install Docker-CE
+  ansible.builtin.shell: |
+    apt-get update
+    apt-get install --no-install-recommends -y -qq docker-ce=$(apt-cache madison docker-ce | grep 17.03 | head -1 | awk '{print $3}')
+    usermod -aG docker vagrant
+
+- name: Add repo Kubernetes
+  ansible.builtin.shell: "echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' > /etc/apt/sources.list.d/kubernetes.list"
+
+- name: Install Kubernetes
+  ansible.builtin.apt:
+    pkg:
+    - kubelet
+    - kubeadm
+    - kubectl
+    state: latest
+    update_cache: yes
+    install_recommends: no
+
+- name: Install nfs-client
+  ansible.builtin.apt:
+    name: nfs-common
+    update_cache: yes
+    install_recommends: no
+
+- name: Install GlusterFs Client
+  ansible.builtin.shell: |
+    apt-get update && apt-get install --no-install-recommends -y -qq python-software-properties
+    add-apt-repository ppa:gluster/glusterfs-3.12
+    apt-get update && apt-get install --no-install-recommends -y -qq glusterfs-client
