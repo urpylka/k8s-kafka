@@ -2,6 +2,7 @@
 # -*- mode: ruby -*-
 
 N = 3
+master_ip = ""
 
 Vagrant.configure(2) do |config|
   (1..N).each do |i|
@@ -39,6 +40,12 @@ Vagrant.configure(2) do |config|
         end
       end
 
+      if i == 1 then
+        master_ip = private_ip
+      else
+        s.vm.provision "file", source: "./.vagrant/machines/master/virtualbox/private_key", destination: "master_private_key"
+      end
+
       s.vm.provision "ansible_local" do |p|
         p.playbook = "ansible/playbook.yml"
         p.install_mode = "pip3"
@@ -49,7 +56,8 @@ Vagrant.configure(2) do |config|
             network_cidr: "10.244.0.0/16",
             cluster_dns: "10.244.0.10",
             private_ip: private_ip,
-            vm_name: vm_name
+            vm_name: vm_name,
+            master_ip: master_ip
         }
       end
 
