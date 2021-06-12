@@ -1,0 +1,16 @@
+- name: Get join-string from master
+  ansible.builtin.shell: "ssh -o 'StrictHostKeyChecking no' -i ~/master_private_key vagrant@{{ master_ip }} 'sudo kubeadm token create --print-join-command'"
+  register: join_command
+
+- name: Show join_command
+  ansible.builtin.debug:
+    var: join_command
+
+- name: Join node to the cluster
+  ansible.builtin.shell: "{{ join_command.stdout }}"
+  become: yes
+
+- name: Remove master private key
+  ansible.builtin.file:
+    path: ~/master_private_key
+    state: absent

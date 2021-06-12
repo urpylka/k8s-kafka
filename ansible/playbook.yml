@@ -33,3 +33,8 @@
       include_role:
         name: setup_master
       when: vm_name == "master"
+
+    - name: Setup common node
+      include_role:
+        name: setup_node
+      when: vm_name != "master"
