@@ -19,8 +19,8 @@
     - name: Copy Flannel yaml
       ansible.builtin.copy:
         src: kube-flannel.yml
-        dest: kube-flannel.yml
+        dest: ~/kube-flannel.yml
         mode: '0644'
 
     - name: Apply Flannel
-      ansible.builtin.shell: "kubectl apply -f kube-flannel.yml"
+      ansible.builtin.shell: "kubectl apply -f ~/kube-flannel.yml"
