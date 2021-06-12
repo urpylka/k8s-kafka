@@ -1,6 +1,11 @@
     - name: Init master node
       ansible.builtin.shell: "kubeadm init --pod-network-cidr={{ network_cidr }} --apiserver-advertise-address={{ private_ip }} --service-cidr={{ network_cidr }}"
       become: yes
+      register: init_output
+
+    - name: Debug master node
+      ansible.builtin.debug:
+        var: init_output
 
     - name: Setup environment on the master node
       ansible.builtin.shell: |
@@ -11,14 +16,11 @@
     - name: Check status at the master node
       ansible.builtin.shell: "kubectl get node"
 
-    - name: Export credentinal for connecting
-      ansible.builtin.shell: "sudo kubeadm token create --print-join-command"
-      register: connection_cred
-
-    - name: Set fact connection_cred
-      set_fact:
-        connection_cred: connection_cred
-        cacheable: yes
+    - name: Copy Flannel yaml
+      ansible.builtin.copy:
+        src: kube-flannel.yml
+        dest: kube-flannel.yml
+        mode: '0644'
 
     - name: Apply Flannel
       ansible.builtin.shell: "kubectl apply -f kube-flannel.yml"
