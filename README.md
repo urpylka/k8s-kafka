@@ -52,6 +52,8 @@ config.vm.provision "shell", inline: <<-EOF <some_code_here> EOF
 
 Проблема с `--extra-config=kubelet.cgroup-driver=systemd` [stackoverflow.com](https://stackoverflow.com/questions/45708175/kubelet-failed-with-kubelet-cgroup-driver-cgroupfs-is-different-from-docker-c)
 
+Flannel yaml [github.com](https://github.com/flannel-io/flannel/blob/master/Documentation/kube-flannel.yml)
+
 ## Источники
 
 * [habr.com](https://habr.com/ru/post/439734/): microk8s, django
@@ -64,3 +66,4 @@ config.vm.provision "shell", inline: <<-EOF <some_code_here> EOF
 * [ealebed.github.io](https://ealebed.github.io/posts/2017/ansible-ввод-sudo-пароля-при-выполнении-playbook/): ansible vault
 * [vagrantup.com](https://www.vagrantup.com/docs/provisioning/ansible_local): vagrant + ansible_local
 * [docs.ansible.com](https://docs.ansible.com/ansible/2.9/modules/systemd_module.html) + [docs.ansible.com](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html): ansible + systemd module
+* [habr.com](https://habr.com/ru/company/flant/blog/332432/): k8s, flannel, ipvlan
