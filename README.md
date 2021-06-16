@@ -8,7 +8,7 @@ Instalation
 brew install ansible vargant vagrant-manager virtualbox virtualbox-extension-pack
 ```
 
-[stackoverflow.com](https://stackoverflow.com/questions/21069908/vboxmanage-error-failed-to-create-the-host-only-adapter)
+Problem: Failed to create the host only adapter ([stackoverflow.com](https://stackoverflow.com/questions/21069908/vboxmanage-error-failed-to-create-the-host-only-adapter)).
 
 ```bash
 git clone https://github.com/urpylka/evolution-test.git
@@ -19,7 +19,35 @@ vagrant up
 
 ## Notes
 
+Шпаргалка по k8s [kubernetes.io](https://kubernetes.io/ru/docs/reference/kubectl/cheatsheet/).
+
+Flannel [github.com](https://github.com/flannel-io/flannel).
+
+Проблема со Flannel [github.com](https://github.com/flannel-io/flannel/issues/671).
+
+https://stackoverflow.com/questions/50833616/kube-flannel-cant-get-cidr-although-podcidr-available-on-node
+
+```log
+Error registering network: failed to acquire lease: node "master" pod cidr not assigned
+```
+
+**RBAC** (Role Based Access Control) – Модуль k8s используемых для разделения прав для работы с ресурсами. Подробнее [тут](https://habr.com/ru/company/flant/blog/422801/).
+
+**Kustomize** – встроенное средство для объединения конфигураций и их перегрузки. Подробнее [тут](https://habr.com/ru/company/flant/blog/469179/) и [тут](https://kustomize.io).
+
+Операторы в k8s используются для слежением и сохранения состояния. Например `etcd`. Подробнее [тут](https://habr.com/ru/company/flant/blog/326414/).
+
+**kafka** in kubernetes
+
+* https://habr.com/ru/post/515584/
+* https://github.com/Yolean/kubernetes-kafka
+* https://habr.com/ru/company/piter/blog/462257/
+* https://www.bigdataschool.ru/blog/kafka-kubernetes-big-data-devops.html
+* https://medium.com/accenture-the-dock/when-how-to-deploy-kafka-on-kubernetes-b18f5270db63
+
 **kubespray** – Подробнее на [официальном сайте](https://kubespray.io).
+
+**k3s** https://habr.com/ru/company/southbridge/blog/551214/
 
 **microk8s** by Canonical – программный пакет включающий в себя `kubelet`, `kubectl`, `kubeadm`, `docker` и все что необходимо для поднятия собстевенного k8s-кластера. Основной вид поставки `microk8s` snap-пакеты в Ubuntu, но также есть реализации для Windows & macOS. Особенностью `microk8s` является то, что k8s-нода запускается внутри docker (а не на хосте). Также `microk8s` содержит множество готовых плагинов, например DNS-сервер, метрики для ELK, storage-плагин. Подробнее на [официальном сайте](https://microk8s.io/#quick-start).
 
