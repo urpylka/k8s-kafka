@@ -10,6 +10,11 @@ brew install ansible vargant vagrant-manager virtualbox virtualbox-extension-pac
 
 Problem: Failed to create the host only adapter ([stackoverflow.com](https://stackoverflow.com/questions/21069908/vboxmanage-error-failed-to-create-the-host-only-adapter)).
 
+https://devops.stackexchange.com/questions/5898/how-to-get-kubernetes-pod-network-cidr
+kubectl get nodes -o jsonpath='{.items[*].spec.podCIDR}'
+
+https://stackoverflow.com/questions/50833616/kube-flannel-cant-get-cidr-although-podcidr-available-on-node
+
 ```bash
 git clone https://github.com/urpylka/evolution-test.git
 cd evolution-test
@@ -18,6 +23,8 @@ vagrant up
 ```
 
 ## Notes
+
+Поднятие кластера [eternalhost.net](https://eternalhost.net/blog/razrabotka/kubernetes-chto-eto), [digitalocean.com](https://www.digitalocean.com/community/tutorials/how-to-create-a-kubernetes-cluster-using-kubeadm-on-ubuntu-18-04-ru)
 
 Шпаргалка по k8s [kubernetes.io](https://kubernetes.io/ru/docs/reference/kubectl/cheatsheet/).
 
