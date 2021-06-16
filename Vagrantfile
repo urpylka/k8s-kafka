@@ -53,8 +53,6 @@ Vagrant.configure(2) do |config|
         p.verbose = true
         p.extra_vars =
         {
-            network_cidr: "10.244.0.0/16",
-            cluster_dns: "10.244.0.10",
             private_ip: private_ip,
             vm_name: vm_name,
             master_ip: master_ip

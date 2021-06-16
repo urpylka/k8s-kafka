@@ -1,5 +1,5 @@
-    - name: Init master node
-      ansible.builtin.shell: "kubeadm init --pod-network-cidr={{ network_cidr }} --apiserver-advertise-address={{ private_ip }} --service-cidr={{ network_cidr }}"
+    - name: Initialize the cluster
+      ansible.builtin.shell: "kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address={{ private_ip }}"
       become: yes
       register: init_output
 
