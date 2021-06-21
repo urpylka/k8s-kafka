@@ -98,10 +98,10 @@ spec:
         image: gcr.io/google_containers/kubernetes-kafka:1.0-10.2.1
         resources:
           limits:
-            memory: "0.5Gi"
-            cpu: "0.4"
+            memory: "0.8Gi"
+            cpu: "0.3"
           requests:
-            memory: "0.1Gi"
+            memory: "0.5Gi"
             cpu: "0.1"
         ports:
         - containerPort: 9092
