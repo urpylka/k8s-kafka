@@ -1,3 +1,18 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafdrop
+  namespace: default
+spec:
+  selector:
+    app: kafdrop
+  type: NodePort
+  ports:
+  - port: 9000
+    targetPort: 9000
+    nodePort: 32001
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -17,6 +32,7 @@ spec:
       containers:
       - name: kafdrop
         image: obsidiandynamics/kafdrop
+        imagePullPolicy: IfNotPresent
         ports:
         - name: kafdrop
           containerPort: 9000
@@ -26,22 +42,9 @@ spec:
             cpu: "0.5"
         env:
         - name: KAFKA_BROKERCONNECT
-          value : "kafka.default.svc.cluster.local"
+          value : "kafka-hs.default.svc.cluster.local"
         - name: JVM_OPTS
           value: "-Xms32M -Xmx64M"
         - name: SERVER_SERVLET_CONTEXTPATH
           value: "/"
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: kafdrop
-  namespace: default
-spec:
-  selector:
-    app: kafdrop
-  type: NodePort
-  ports:
-  - port: 9000
-    targetPort: 9000
-    nodePort: 32001
