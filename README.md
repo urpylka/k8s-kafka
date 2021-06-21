@@ -33,6 +33,35 @@ error: there is no need to specify a resource type as a separate argument when p
 external access to kafka
 https://github.com/bitnami/charts/issues/3147
 
+
+Topic create, manage
+
+https://docs.cloudera.com/HDPDocuments/HDP3/HDP-3.1.5/kafka-working-with-topics/content/creating_a_kafka_topic.html
+https://sparkbyexamples.com/kafka/creating-apache-kafka-topic/
+https://gist.github.com/pierangeloc/e6dcd3993276838558eb2a86f14a6e06
+
+kubectl exec -it pod/kafka-0 -c kubernetes-kafka -- sh
+
+kafka-topics.sh --create \
+    --zookeeper zk-cs.default.svc.cluster.local:2181 \
+    --replication-factor 1 \
+    --partitions 1 \
+    --topic input
+
+kafka-topics.sh --create \
+    --zookeeper zk-cs.default.svc.cluster.local:2181 \
+    --replication-factor 1 \
+    --partitions 1 \
+    --topic output
+
+kafka-topics.sh --zookeeper zk-cs.default.svc.cluster.local:2181 --list
+
+kafka-topics.sh --zookeeper zk-cs.default.svc.cluster.local:2181 --describe
+
+kafka explained
+
+https://www.confluent.io/blog/kafka-listeners-explained/
+
 Kubernetes DNS
 
 * [medium.com](https://medium.com/kubernetes-tutorials/kubernetes-dns-for-services-and-pods-664804211501)
