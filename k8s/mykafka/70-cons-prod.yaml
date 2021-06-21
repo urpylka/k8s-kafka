@@ -1,0 +1,59 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-consumer-hs
+  labels:
+    app: kafka-consumer
+spec:
+  clusterIP: None
+  ports:
+  - port: 8001
+    name: exporter
+  selector:
+    app: kafka-consumer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-producer-hs
+  labels:
+    app: kafka-producer
+spec:
+  clusterIP: None
+  ports:
+  - port: 8002
+    name: exporter
+  selector:
+    app: kafka-producer
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kafka-consumer
+  namespace: default
+spec:
+  containers:
+  - name: kafka-consumer
+    image: docker.io/urpylka/kafka-consumer
+    imagePullPolicy: IfNotPresent
+    restartPolicy: Always
+    ports:
+    - containerPort: 8001
+      name: exporter
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kafka-producer
+  namespace: default
+spec:
+  containers:
+  - name: kafka-producer
+    image: docker.io/urpylka/kafka-producer
+    imagePullPolicy: IfNotPresent
+    restartPolicy: Always
+    ports:
+    - containerPort: 8002
+      name: exporter
+---

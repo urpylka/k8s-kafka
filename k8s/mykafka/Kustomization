@@ -8,3 +8,4 @@ resources:
 - 51-prometheus.yaml
 - 60-grafana-config.yaml
 - 61-grafana.yaml
+- 70-cons-prod.yaml
