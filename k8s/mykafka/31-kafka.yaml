@@ -106,9 +106,13 @@ spec:
         command:
         - sh
         - -c
-        - "exec kafka-server-start.sh /opt/kafka/config/server.properties --override broker.id=${HOSTNAME##*-} \
-          --override listeners=PLAINTEXT://:9092 \
-          --override zookeeper.connect=zk-cs.default.svc.cluster.local:2181 \
+        - "exec kafka-server-start.sh /opt/kafka/config/server.properties \
+          --override broker.id=${HOSTNAME##*-} \
+          --override listeners=PLAINTEXT://0.0.0.0:9092 \
+          --override advertised.host.name=kafka-hs.default.svc.cluster.local \
+          --override advertised.listeners=PLAINTEXT://kafka-hs.default.svc.cluster.local:9092 \
+          --override advertised.port=9092 \
+          --override zookeeper.connect=zk-hs.default.svc.cluster.local:2181 \
           --override log.dir=/var/lib/kafka \
           --override auto.create.topics.enable=true \
           --override auto.leader.rebalance.enable=true \

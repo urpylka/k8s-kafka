@@ -54,7 +54,7 @@ spec:
         # - sh prometheus --config.file=/etc/prometheus/prometheus-config.yml
         env:
         - name: KAFKA_BROKERCONNECT
-          value : "kafka.default.svc.cluster.local"
+          value : "kafka-hs.default.svc.cluster.local"
         - name: JVM_OPTS
           value: "-Xms32M -Xmx64M"
         - name: SERVER_SERVLET_CONTEXTPATH
