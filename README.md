@@ -30,6 +30,9 @@ vagrant up
 error: there is no need to specify a resource type as a separate argument when passing arguments in resource/name form (e.g. 'kubectl get resource/<resource_name>' instead of 'kubectl get resource resource/<resource_name>'
 ```
 
+external access to kafka
+https://github.com/bitnami/charts/issues/3147
+
 Kubernetes DNS
 
 * [medium.com](https://medium.com/kubernetes-tutorials/kubernetes-dns-for-services-and-pods-664804211501)
