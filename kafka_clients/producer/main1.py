@@ -48,7 +48,7 @@ def main(delay, kafka):
             time.sleep(delay)
 
 if __name__ == '__main__':
-    delay = 1
+    delay = 3
     start_http_server(8001)
     kafka = "kafka-hs.default.svc.cluster.local:9092"
     while(True):
