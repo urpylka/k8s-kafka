@@ -14,20 +14,6 @@ spec:
     app: kafka-consumer
 ---
 apiVersion: v1
-kind: Service
-metadata:
-  name: kafka-producer-hs
-  labels:
-    app: kafka-producer
-spec:
-  clusterIP: None
-  ports:
-  - port: 8001
-    name: exporter
-  selector:
-    app: kafka-producer
----
-apiVersion: v1
 kind: Pod
 metadata:
   name: kafka-consumer
@@ -47,24 +33,5 @@ spec:
       requests:
         memory: "50M"
         cpu: "25m"
-  restartPolicy: Always
----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: kafka-producer
-  namespace: default
-spec:
-  containers:
-  - name: kafka-producer
-    image: docker.io/urpylka/kafka-producer:latest
-    imagePullPolicy: Always
-    ports:
-    - containerPort: 8001
-      name: exporter
-    resources:
-      requests:
-        memory: "100M"
-        cpu: "50m"
   restartPolicy: Always
 ---
