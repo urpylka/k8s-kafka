@@ -14,7 +14,7 @@ data:
                 "name": "prometheus",
                 "orgId": 1,
                 "type": "prometheus",
-                "url": "http://prometheus.default.svc.cluster.local:9090",
+                "url": "http://prometheus-hs.default.svc.cluster.local:9090",
                 "version": 1
             }
         ]
