@@ -51,6 +51,9 @@ def main(delay, kafka):
             print(d)
 
             publish_message(prod, "output", "timestamp", str(d))
+            c1.inc()
+
+c1 = Counter('successfully_processed', 'Description of counter successfully_processed')
 
 if __name__ == '__main__':
     delay = 1
