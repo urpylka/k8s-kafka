@@ -97,9 +97,12 @@ spec:
         imagePullPolicy: IfNotPresent
         image: gcr.io/google_containers/kubernetes-kafka:1.0-10.2.1
         resources:
+          limits:
+            memory: "0.5Gi"
+            cpu: "0.4"
           requests:
-            memory: "0.9Gi"
-            cpu: "0.5"
+            memory: "0.1Gi"
+            cpu: "0.1"
         ports:
         - containerPort: 9092
           name: server
@@ -231,9 +234,12 @@ spec:
         imagePullPolicy: Always
         image: quay.io/cloudhut/kminion:master
         resources:
-          requests:
+          limits:
             memory: "0.1Gi"
             cpu: "0.2"
+          requests:
+            memory: "50M"
+            cpu: "100m"
         ports:
         - containerPort: 8080
           name: server2

@@ -41,9 +41,12 @@ spec:
     - containerPort: 8001
       name: exporter
     resources:
-      requests:
+      limits:
         memory: "100M"
         cpu: "50m"
+      requests:
+        memory: "50M"
+        cpu: "25m"
   restartPolicy: Always
 ---
 apiVersion: v1

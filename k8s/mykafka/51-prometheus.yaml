@@ -50,6 +50,9 @@ spec:
           limits:
             memory: "256M"
             cpu: "0.3"
+          requests:
+            memory: "100M"
+            cpu: "0.1"
         # command:
         # - sh prometheus --config.file=/etc/prometheus/prometheus-config.yml
         env:
