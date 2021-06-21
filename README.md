@@ -22,6 +22,9 @@ cd evolution-test
 vagrant up
 ```
 
+* [Grafana](http://172.16.20.11:32000)
+* [Prometheus](http://172.16.20.11:32090)
+
 ## Notes
 
 Ещё одна ошибка https://github.com/Azure/vscode-kubernetes-tools/issues/880
