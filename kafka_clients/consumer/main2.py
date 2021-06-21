@@ -56,6 +56,7 @@ def main(delay, kafka):
 c1 = Counter('successfully_processed', 'Description of counter successfully_processed')
 
 if __name__ == '__main__':
+    print("Consumer has been started.")
     delay = 1
     start_http_server(8002)
     kafka = "kafka-hs.default.svc.cluster.local:9092"

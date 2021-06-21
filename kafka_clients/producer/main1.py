@@ -48,6 +48,7 @@ def main(delay, kafka):
             time.sleep(delay)
 
 if __name__ == '__main__':
+    print("Producer has been started.")
     delay = 3
     start_http_server(8001)
     kafka = "kafka-hs.default.svc.cluster.local:9092"
