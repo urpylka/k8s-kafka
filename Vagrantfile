@@ -30,9 +30,16 @@ Vagrant.configure(2) do |config|
 
       s.vm.provider "virtualbox" do |v|
         v.gui = false
-        if i == 1 then
+        case i
+        when 1
           # Params for the master node
           v.cpus = 2
+          v.memory = 2048
+        when 2
+          v.cpus = 2
+          v.memory = 2048
+        when 3
+          v.cpus = 1
           v.memory = 2048
         else
           v.cpus = 1
