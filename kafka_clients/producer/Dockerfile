@@ -10,4 +10,4 @@ EXPOSE 8001
 
 COPY main1.py /main1.py
 
-CMD [ "sh", "python3", "/main1.py" ]
+CMD [ "/main1.py" ]

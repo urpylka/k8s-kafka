@@ -10,4 +10,4 @@ EXPOSE 8002
 
 COPY main2.py /main2.py
 
-CMD [ "sh", "python3", "/main2.py" ]
+CMD [ "/main2.py" ]
