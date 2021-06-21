@@ -1,0 +1,10 @@
+resources:
+# - 10-gluster.yaml
+- 20-zookeeper.yaml
+- 30-kminion-config.yaml
+- 31-kafka.yaml
+# - 40-kafdrop.yaml
+- 50-prometheus-config.yaml
+- 51-prometheus.yaml
+- 60-grafana-config.yaml
+- 61-grafana.yaml

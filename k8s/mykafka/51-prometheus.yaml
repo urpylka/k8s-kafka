@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      name: prometheus
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - name: prometheus
+        image: prom/prometheus
+        ports:
+        - name: prometheus
+          containerPort: 9090
+        resources:
+          limits:
+            memory: "256M"
+            cpu: "0.3"
+        # command:
+        # - sh prometheus --config.file=/etc/prometheus/prometheus-config.yml
+        env:
+        - name: KAFKA_BROKERCONNECT
+          value : "kafka.default.svc.cluster.local"
+        - name: JVM_OPTS
+          value: "-Xms32M -Xmx64M"
+        - name: SERVER_SERVLET_CONTEXTPATH
+          value: "/"
+        volumeMounts:
+        - name: prometheus-data
+          mountPath: /etc/prometheus
+      volumes:
+        - name: prometheus-data
+          configMap:
+            name: prometheus-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus
+  namespace: default
+spec:
+  selector:
+    app: prometheus
+  type: NodePort
+  ports:
+  - port: 9090
+    targetPort: 9090
+    nodePort: 32090
