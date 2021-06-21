@@ -1,0 +1,19 @@
+- name: Install nfs-client
+  ansible.builtin.apt:
+    name: nfs-common
+    update_cache: yes
+    install_recommends: no
+
+- name: Install GlusterFs Client
+  ansible.builtin.shell: |
+    apt-get update && apt-get install --no-install-recommends -y -qq python-software-properties
+    add-apt-repository ppa:gluster/glusterfs-3.12
+    apt-get update && apt-get install --no-install-recommends -y -qq glusterfs-client glusterfs-server
+
+- name: Check glusterd service
+  ansible.builtin.systemd:
+    state: started
+    name: glusterd
+
+- name: Create gluster directory
+  ansible.builtin.file: path=/gluster state=directory mode=0755

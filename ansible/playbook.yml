@@ -7,17 +7,14 @@
       include_role:
         name: install_k8s
 
-    - name: Restart kubelet service
-      ansible.builtin.systemd:
-        state: restarted
-        daemon_reload: yes
-        name: kubelet
-      become: yes
+    - name: Install glusterfs
+      include_role:
+        name: install_gluster
 
-    - name: Check kubelet service
-      ansible.builtin.systemd:
-        state: started
-        name: kubelet
+    - name: Setup gluster
+      include_role:
+        name: setup_gluster
+      when: vm_name == "master"
 
     - name: Setup master node
       include_role:

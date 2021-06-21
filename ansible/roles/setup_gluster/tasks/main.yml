@@ -1,0 +1,36 @@
+    - name: Initialize the cluster
+      ansible.builtin.shell: "kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address={{ private_ip }}"
+      become: yes
+      register: init_output
+
+    - name: Debug master node
+      ansible.builtin.debug:
+        var: init_output
+
+    - name: Setup environment on the master node
+      ansible.builtin.shell: |
+        mkdir -p $HOME/.kube
+        sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+        sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+# sudo gluster peer probe 172.16.20.12
+# sudo gluster peer probe 172.16.20.13
+# mkdir /gluster
+#sudo gluster volume create main replica 2 172.16.20.12:/gluster/main 172.16.20.13:/gluster/main force
+# sudo gluster volume start main
+# gluster volume status main
+
+# sudo gluster volume create volume5 172.16.20.12:/gluster/volume5 force
+# sudo gluster volume create volume6 172.16.20.13:/gluster/volume6 force
+# sudo gluster volume create volume7 172.16.20.12:/gluster/volume7 force
+# sudo gluster volume create volume8 172.16.20.13:/gluster/volume8 force
+# sudo gluster volume create volume9 172.16.20.12:/gluster/volume9 force
+# sudo gluster volume create volume10 172.16.20.13:/gluster/volume10 force
+
+
+# sudo gluster volume start volume5
+# sudo gluster volume start volume6
+# sudo gluster volume start volume7
+# sudo gluster volume start volume8
+# sudo gluster volume start volume9
+# sudo gluster volume start volume10
