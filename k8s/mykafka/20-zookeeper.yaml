@@ -18,15 +18,28 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: zk-cs
-  labels:
-    app: zk
+  name: zk-node
+  namespace: default
 spec:
+  selector:
+    app: zk
+  type: NodePort
   ports:
   - port: 2181
     name: client
+    nodePort: 32003
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zk-cs
+  namespace: default
+spec:
   selector:
     app: zk
+  ports:
+  - port: 2181
+    name: client
 ---
 apiVersion: apps/v1
 kind: StatefulSet
