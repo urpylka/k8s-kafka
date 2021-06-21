@@ -35,7 +35,7 @@ metadata:
 spec:
   containers:
   - name: kafka-consumer
-    image: docker.io/urpylka/kafka-consumer
+    image: docker.io/urpylka/kafka-consumer:latest
     imagePullPolicy: IfNotPresent
     ports:
     - containerPort: 8001
@@ -57,7 +57,7 @@ metadata:
 spec:
   containers:
   - name: kafka-producer
-    image: docker.io/urpylka/kafka-producer
+    image: docker.io/urpylka/kafka-producer:latest
     imagePullPolicy: IfNotPresent
     ports:
     - containerPort: 8002
