@@ -37,10 +37,10 @@ spec:
   - name: kafka-consumer
     image: docker.io/urpylka/kafka-consumer
     imagePullPolicy: IfNotPresent
-    restartPolicy: Always
     ports:
     - containerPort: 8001
       name: exporter
+  restartPolicy: Always
 ---
 apiVersion: v1
 kind: Pod
@@ -52,8 +52,8 @@ spec:
   - name: kafka-producer
     image: docker.io/urpylka/kafka-producer
     imagePullPolicy: IfNotPresent
-    restartPolicy: Always
     ports:
     - containerPort: 8002
       name: exporter
+  restartPolicy: Always
 ---
