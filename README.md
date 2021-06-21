@@ -37,9 +37,9 @@ Kubernetes DNS
 * [Cluster Networking](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
 * [DNS in Pods, Service](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
 * [Custom DNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)
-* []()
-* []()
-* []()
+* [probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
+* [probes](https://kubernetes.io/ru/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
+* [probes](https://habr.com/ru/company/flant/blog/470958/)
 * []()
 * []()
 
@@ -80,6 +80,9 @@ sudo gluster volume create volume3 172.16.20.12:/gluster/volume3 force
 sudo gluster volume create volume4 172.16.20.13:/gluster/volume4 force
 ```
 
+
+kminion
+https://grafana.com/grafana/dashboards/14012
 https://github.com/cloudhut/kminion
 https://itsecforu.ru/2020/01/28/☸%EF%B8%8F-как-настроить-grafana-на-kubernetes/
 https://github.com/obsidiandynamics/kafdrop
