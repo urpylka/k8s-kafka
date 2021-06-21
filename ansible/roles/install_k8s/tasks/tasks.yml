@@ -46,14 +46,18 @@
     update_cache: yes
     install_recommends: no
 
-- name: Install nfs-client
-  ansible.builtin.apt:
-    name: nfs-common
-    update_cache: yes
-    install_recommends: no
+- name: Add k8s config
+  ansible.builtin.template:
+    src: 10-kubeadm.conf
+    dest: "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf"
 
-- name: Install GlusterFs Client
-  ansible.builtin.shell: |
-    apt-get update && apt-get install --no-install-recommends -y -qq python-software-properties
-    add-apt-repository ppa:gluster/glusterfs-3.12
-    apt-get update && apt-get install --no-install-recommends -y -qq glusterfs-client
+- name: Restart kubelet service
+  ansible.builtin.systemd:
+    state: restarted
+    daemon_reload: yes
+    name: kubelet
+
+- name: Check kubelet service
+  ansible.builtin.systemd:
+    state: started
+    name: kubelet
