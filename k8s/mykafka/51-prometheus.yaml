@@ -48,8 +48,8 @@ spec:
           containerPort: 9090
         resources:
           limits:
-            memory: "256M"
-            cpu: "0.3"
+            memory: "400M"
+            cpu: "0.4"
           requests:
             memory: "100M"
             cpu: "0.1"
