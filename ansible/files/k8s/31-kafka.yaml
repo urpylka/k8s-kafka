@@ -268,9 +268,9 @@ spec:
       #   - containerPort: 9141
       #     name: jmx-exporter
 
-      securityContext:
-        runAsUser: 1000
-        fsGroup: 1000
+      # securityContext:
+      #   runAsUser: 1000
+      #   fsGroup: 1000
 
       volumes:
         - name: kminion-data
