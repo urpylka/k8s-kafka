@@ -59,7 +59,7 @@ if __name__ == '__main__':
     print("Consumer has been started.")
 
     kafka = "kafka-hs.default.svc.cluster.local:9092"
-    prome = 8001
+    prome = 8002
 
     if len(sys.argv) == 4:
         kafka = sys.argv[1]
@@ -68,7 +68,8 @@ if __name__ == '__main__':
     print("kafka = " + str(kafka))
     print("prome = " + str(prome))
 
-    start_http_server(8002)
+    start_http_server(prome)
+
     kafka = "kafka-hs.default.svc.cluster.local:9092"
     while(True):
         try:
