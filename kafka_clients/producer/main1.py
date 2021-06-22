@@ -3,7 +3,7 @@
 # sudo apt install python3 python3-pip
 # sudo pip3 install kafka-python prometheus-client
 
-import time
+import time, sys
 from datetime import datetime
 from kafka import KafkaProducer
 from prometheus_client import start_http_server
@@ -48,10 +48,24 @@ def main(delay, kafka):
             time.sleep(delay)
 
 if __name__ == '__main__':
+
     print("Producer has been started.")
-    delay = 10
-    start_http_server(8001)
+
     kafka = "kafka-hs.default.svc.cluster.local:9092"
+    prome = 8001
+    delay = 10
+
+    if len(sys.argv) == 4:
+        kafka = sys.argv[1]
+        prome = sys.argv[2]
+        delay = sys.argv[3]
+
+    print("kafka = " + str(kafka))
+    print("prome = " + str(prome))
+    print("delay = " + str(delay))
+
+    start_http_server(prome)
+
     while(True):
         try:
             main(delay, kafka)
