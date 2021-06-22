@@ -27,6 +27,11 @@ spec:
     ports:
     - containerPort: 8001
       name: exporter
+    command:
+    - /main1.py
+    - "kafka-hs.default.svc.cluster.local:9092"
+    - 8001
+    - 8
     resources:
       requests:
         memory: "100M"
