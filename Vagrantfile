@@ -56,7 +56,7 @@ Vagrant.configure(2) do |config|
       s.vm.provision "ansible_local" do |p|
         p.playbook = "ansible/playbook.yml"
         p.install_mode = "pip3"
-        p.version = "2.9.22"
+        p.version = "2.9.23"
         p.verbose = true
         p.extra_vars =
         {
