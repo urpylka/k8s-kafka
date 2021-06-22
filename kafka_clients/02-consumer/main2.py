@@ -63,7 +63,7 @@ if __name__ == '__main__':
 
     if len(sys.argv) == 4:
         kafka = sys.argv[1]
-        prome = sys.argv[2]
+        prome = int(sys.argv[2])
 
     print("kafka = " + str(kafka))
     print("prome = " + str(prome))
