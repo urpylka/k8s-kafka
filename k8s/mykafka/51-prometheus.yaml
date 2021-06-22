@@ -63,10 +63,10 @@ spec:
         - name: SERVER_SERVLET_CONTEXTPATH
           value: "/"
         volumeMounts:
-        - name: prometheus-data
+        - name: prometheus-etc
           mountPath: /etc/prometheus
       volumes:
-        - name: prometheus-data
+        - name: prometheus-etc
           configMap:
             name: prometheus-config
 ---
