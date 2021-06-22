@@ -5,6 +5,7 @@ metadata:
   name: kafka-producer-hs
   labels:
     app: kafka-producer
+  namespace: default
 spec:
   clusterIP: None
   ports:

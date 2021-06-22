@@ -5,6 +5,7 @@ metadata:
   name: kafka-consumer-hs
   labels:
     app: kafka-consumer
+  namespace: default
 spec:
   clusterIP: None
   ports:
