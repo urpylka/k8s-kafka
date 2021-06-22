@@ -3,7 +3,7 @@
 # sudo apt install python3 python3-pip
 # sudo pip3 install kafka-python prometheus-client rfc3339
 
-import datetime
+import datetime, sys
 from kafka import KafkaConsumer, KafkaProducer
 from prometheus_client import start_http_server
 from prometheus_client import Counter
