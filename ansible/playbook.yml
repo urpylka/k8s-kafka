@@ -25,3 +25,8 @@
       include_role:
         name: setup_node
       when: vm_name != "master"
+
+    - name: Enable solution
+      ansible.builtin.shell: |
+        kubectl apply -k /vagrant/k8s/mykafka
+      when: vm_name == "master"
