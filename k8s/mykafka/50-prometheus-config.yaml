@@ -13,14 +13,14 @@ data:
         static_configs:
           - targets:
             - kminion-hs.default.svc.cluster.local:8080
-      - job_name: 'kafka-consumer'
-        static_configs:
-          - targets:
-            - kafka-consumer-hs.default.svc.cluster.local:8001
       - job_name: 'kafka-producer'
         static_configs:
           - targets:
-            - kafka-producer-hs.default.svc.cluster.local:8002
+            - kafka-producer-hs.default.svc.cluster.local:8001
+      - job_name: 'kafka-consumer'
+        static_configs:
+          - targets:
+            - kafka-consumer-hs.default.svc.cluster.local:8002
       # - job_name: 'jmx-kafka-exporter'
       #   static_configs:
       #     - targets:
