@@ -49,7 +49,7 @@ def main(delay, kafka):
 
 if __name__ == '__main__':
     print("Producer has been started.")
-    delay = 3
+    delay = 10
     start_http_server(8001)
     kafka = "kafka-hs.default.svc.cluster.local:9092"
     while(True):
