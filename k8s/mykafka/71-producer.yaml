@@ -30,11 +30,14 @@ spec:
     command:
     - /main1.py
     - "kafka-hs.default.svc.cluster.local:9092"
-    - 8001
-    - 8
+    - "8001"
+    - "8"
     resources:
-      requests:
+      limits:
         memory: "100M"
         cpu: "50m"
+      requests:
+        memory: "50M"
+        cpu: "25m"
   restartPolicy: Always
 ---
