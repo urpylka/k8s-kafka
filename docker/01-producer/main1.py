@@ -9,14 +9,19 @@ from kafka import KafkaProducer
 from prometheus_client import start_http_server
 from prometheus_client import Counter
 
+c1 = Counter('my_successfuls', 'Description of counter my_successfuls')
+c2 = Counter('my_failures', 'Description of counter my_failures')
+
 def publish_message(producer_instance, topic_name, key, value):
     try:
         key_bytes = bytes(key, encoding='utf-8')
         value_bytes = bytes(value, encoding='utf-8')
         producer_instance.send(topic_name, key=key_bytes, value=value_bytes)
         producer_instance.flush()
+        c1.inc()
         # print('Message published successfully.')
     except Exception as ex:
+        c2.inc()
         print('Exception in publishing message')
         print(str(ex))
 
@@ -34,17 +39,14 @@ def connect_kafka_producer(kafka):
 def main(delay, kafka):
     prod = connect_kafka_producer(kafka)
 
-    c1 = Counter('my_successfuls', 'Description of counter my_successfuls')
-    c2 = Counter('my_failures', 'Description of counter my_failures')
+
 
     while(True):
         try:
             timestamp = datetime.today().timestamp()
             publish_message(prod, "input", "timestamp", str(timestamp))
             time.sleep(delay)
-            c1.inc()
         except Exception:
-            c2.inc()
             time.sleep(delay)
 
 if __name__ == '__main__':
