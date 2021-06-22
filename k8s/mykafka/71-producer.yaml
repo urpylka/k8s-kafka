@@ -3,22 +3,22 @@ apiVersion: v1
 kind: Service
 metadata:
   name: kafka-producer-hs
-  labels:
-    app: kafka-producer
   namespace: default
 spec:
+  selector:
+    app: kafka-producer
   clusterIP: None
   ports:
   - port: 8001
     name: exporter
-  selector:
-    app: kafka-producer
 ---
 apiVersion: v1
 kind: Pod
 metadata:
   name: kafka-producer
   namespace: default
+  labels:
+    app: kafka-producer
 spec:
   containers:
   - name: kafka-producer
