@@ -75,8 +75,6 @@ Kubernetes DNS
 * [probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
 * [probes](https://kubernetes.io/ru/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)
 * [probes](https://habr.com/ru/company/flant/blog/470958/)
-* []()
-* []()
 
 Kubernetes instructions:
 
@@ -87,10 +85,6 @@ Kubernetes instructions:
 * [Resources](https://ealebed.github.io/posts/2019/ресурсы-в-kubernetes-часть-1-memory/)
 * [StatefulSet](https://kubernetes.io/docs/tutorials/stateful-application/basic-stateful-set/)
 * [Operator framework](https://m.habr.com/ru/company/lamoda/blog/446648/)
-* []()
-* []()
-* []()
-* []()
 
 Deprecated API
 
@@ -115,7 +109,6 @@ sudo gluster volume create volume3 172.16.20.12:/gluster/volume3 force
 sudo gluster volume create volume4 172.16.20.13:/gluster/volume4 force
 ```
 
-
 kminion
 https://grafana.com/grafana/dashboards/14012
 https://github.com/cloudhut/kminion
@@ -127,7 +120,7 @@ https://habr.com/ru/company/X5RetailGroup/blog/539396/
 
 dig kafka.default.svc.cluster.local @10.96.0.10
 
-cука
+c*ка
 https://github.com/kubernetes/kubernetes/issues/60835
 
 Kafka + Zookeeper
