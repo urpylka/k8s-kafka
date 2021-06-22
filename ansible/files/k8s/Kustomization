@@ -1,5 +1,5 @@
 resources:
-# - 10-gluster.yaml
+- 10-gluster.yaml
 - 20-zookeeper.yaml
 - 30-kminion-config.yaml
 - 31-kafka.yaml

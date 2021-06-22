@@ -7,11 +7,19 @@
       ansible.builtin.debug:
         var: init_output
 
-    - name: Setup environment on the master node
+    - name: Setup vagrant user
       ansible.builtin.shell: |
         mkdir -p $HOME/.kube
         sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
         sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+    - name: Setup root user
+      ansible.builtin.shell: |
+        whoami
+        mkdir -p $HOME/.kube
+        cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+        chown $(id -u):$(id -g) $HOME/.kube/config
+      become: yes
 
     - name: Check status at the master node
       ansible.builtin.shell: "kubectl get node"

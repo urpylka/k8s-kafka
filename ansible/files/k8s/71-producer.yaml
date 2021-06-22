@@ -31,7 +31,7 @@ spec:
     - /main1.py
     - "kafka-hs.default.svc.cluster.local:9092"
     - "8001"
-    - "8"
+    - "10"
     resources:
       limits:
         memory: "100M"
