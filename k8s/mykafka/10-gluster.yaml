@@ -25,7 +25,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: gluster-volume1
+  name: gluster-volume01
   namespace: default
 spec:
   storageClassName: standard
@@ -35,13 +35,13 @@ spec:
     - ReadWriteOnce
   glusterfs:
     endpoints: "glusterfs-cluster"
-    path: "volume1"
+    path: "volume01"
     readOnly: false
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: gluster-volume2
+  name: gluster-volume02
   namespace: default
 spec:
   storageClassName: standard
@@ -51,13 +51,13 @@ spec:
     - ReadWriteOnce
   glusterfs:
     endpoints: "glusterfs-cluster"
-    path: "volume2"
+    path: "volume02"
     readOnly: false
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: gluster-volume3
+  name: gluster-volume03
   namespace: default
 spec:
   storageClassName: standard
@@ -67,13 +67,13 @@ spec:
     - ReadWriteOnce
   glusterfs:
     endpoints: "glusterfs-cluster"
-    path: "volume3"
+    path: "volume03"
     readOnly: false
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: gluster-volume4
+  name: gluster-volume04
   namespace: default
 spec:
   storageClassName: standard
@@ -83,13 +83,13 @@ spec:
     - ReadWriteOnce
   glusterfs:
     endpoints: "glusterfs-cluster"
-    path: "volume4"
+    path: "volume04"
     readOnly: false
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: gluster-volume5
+  name: gluster-volume05
   namespace: default
 spec:
   storageClassName: standard
@@ -99,13 +99,13 @@ spec:
     - ReadWriteOnce
   glusterfs:
     endpoints: "glusterfs-cluster"
-    path: "volume5"
+    path: "volume05"
     readOnly: false
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: gluster-volume6
+  name: gluster-volume06
   namespace: default
 spec:
   storageClassName: standard
@@ -115,13 +115,13 @@ spec:
     - ReadWriteOnce
   glusterfs:
     endpoints: "glusterfs-cluster"
-    path: "volume6"
+    path: "volume06"
     readOnly: false
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: gluster-volume7
+  name: gluster-volume07
   namespace: default
 spec:
   storageClassName: standard
@@ -131,13 +131,13 @@ spec:
     - ReadWriteOnce
   glusterfs:
     endpoints: "glusterfs-cluster"
-    path: "volume7"
+    path: "volume07"
     readOnly: false
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: gluster-volume8
+  name: gluster-volume08
   namespace: default
 spec:
   storageClassName: standard
@@ -147,13 +147,13 @@ spec:
     - ReadWriteOnce
   glusterfs:
     endpoints: "glusterfs-cluster"
-    path: "volume8"
+    path: "volume08"
     readOnly: false
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: gluster-volume9
+  name: gluster-volume09
   namespace: default
 spec:
   storageClassName: standard
@@ -163,7 +163,7 @@ spec:
     - ReadWriteMany
   glusterfs:
     endpoints: "glusterfs-cluster"
-    path: "volume9"
+    path: "volume09"
     readOnly: false
 ---
 apiVersion: v1
