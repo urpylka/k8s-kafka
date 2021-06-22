@@ -6,7 +6,8 @@ resources:
 # - 40-kafdrop.yaml
 - 50-prometheus-config.yaml
 - 51-prometheus.yaml
-- 60-grafana-config.yaml
-- 61-grafana.yaml
+- 60-grafana-datasource.yaml
+- 61-grafana-dashboards.yaml
+- 62-grafana.yaml
 - 71-producer.yaml
 - 72-consumer.yaml

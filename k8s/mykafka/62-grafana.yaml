@@ -33,6 +33,12 @@ spec:
           - mountPath: /etc/grafana/provisioning/datasources
             name: grafana-datasources
             readOnly: false
+          - mountPath: /etc/grafana/provisioning/dashboards
+            name: grafana-dashboards-provision
+            readOnly: false
+          - mountPath: /etc/grafana/dashboards
+            name: grafana-dashboards
+            readOnly: false
       volumes:
         - name: grafana-storage
           emptyDir: {}
@@ -40,6 +46,14 @@ spec:
           configMap:
               defaultMode: 420
               name: grafana-datasources
+        - name: grafana-dashboards
+          configMap:
+              defaultMode: 420
+              name: grafana-dashboards
+        - name: grafana-dashboards-provision
+          configMap:
+              defaultMode: 420
+              name: grafana-dashboards-provision
 ---
 apiVersion: v1
 kind: Service
