@@ -32,7 +32,7 @@ def connect_kafka_producer(kafka):
     finally:
         return _producer
 
-def main(delay, kafka):
+def main(kafka):
     prod = connect_kafka_producer(kafka)
     consumer = KafkaConsumer("input", group_id = 'group1', bootstrap_servers = [kafka], auto_offset_reset = 'earliest')
 
@@ -55,13 +55,12 @@ def main(delay, kafka):
 c1 = Counter('successfully_processed', 'Description of counter successfully_processed')
 
 if __name__ == '__main__':
-
     print("Consumer has been started.")
 
     kafka = "kafka-hs.default.svc.cluster.local:9092"
     prome = 8002
 
-    if len(sys.argv) == 4:
+    if len(sys.argv) == 3:
         kafka = sys.argv[1]
         prome = int(sys.argv[2])
 
@@ -70,7 +69,6 @@ if __name__ == '__main__':
 
     start_http_server(prome)
 
-    kafka = "kafka-hs.default.svc.cluster.local:9092"
     while(True):
         try:
             main(kafka)
